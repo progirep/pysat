@@ -150,6 +150,7 @@ inline void create_vvect(int& top_id, vector<int>& ov, size_t nvars)
 //=============================================================================
 inline void copy_vvect(int& top_id, vector<int>& ov, vector<int>& iv)
 {
+    (void)top_id;
 	size_t refnv = ov.size();
 	ov.resize(refnv + iv.size(), 0);
 

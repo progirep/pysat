@@ -16,20 +16,20 @@
 inline void ladder_encode_equals1(
 	int& top_id,
 	ClauseSet& clset,
-	vector<int>& vars
+    std::vector<int>& vars
 )
 {
 	size_t n = vars.size();
 	size_t p = n - 1;
 
 	if (n == 1) {
-		vector<int> cl(1, vars[0]);
+        std::vector<int> cl(1, vars[0]);
 		clset.create_clause(cl);
 		return;
 	}
 
 	if (n == 2) {
-		vector<int> cl(2);
+        std::vector<int> cl(2);
 		cl[0] = vars[0]; cl[1] = vars[1];
 		clset.create_clause(cl);
 
@@ -38,13 +38,13 @@ inline void ladder_encode_equals1(
 		return;
 	}
 
-	vector<int> auxvars;
+    std::vector<int> auxvars;
 	auxvars.push_back(0);
 
 	for (size_t j = 1; j <= p; ++j)
 		auxvars.push_back(++top_id);
 
-	vector<int> cl(2);
+    std::vector<int> cl(2);
 
 	// validity clauses (-aux[i+1] v aux[i]) i:1..p-1
 	for (size_t i = 1; i < p; i++) {
@@ -96,12 +96,12 @@ inline void ladder_encode_equals1(
 inline void ladder_encode_atmost1(
 	int& top_id,
 	ClauseSet& clset,
-	vector<int>& vars
+    std::vector<int>& vars
 )
 {
 	int extra = ++top_id;
 
-	vector<int> new_vars;
+    std::vector<int> new_vars;
 	new_vars.resize(vars.size() + 1);
 
 	for (size_t i = 0; i < vars.size(); i++)
@@ -113,7 +113,7 @@ inline void ladder_encode_atmost1(
 
 //
 //=============================================================================
-inline void ladder_encode_atleast1(ClauseSet& clset, vector<int>& vars)
+inline void ladder_encode_atleast1(ClauseSet& clset, std::vector<int>& vars)
 {
 	common_encode_atleast1(clset, vars);
 }

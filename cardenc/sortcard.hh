@@ -21,7 +21,7 @@ inline void sortn_half_merge_recur(
 	vector<int>& av,
 	vector<int>& bv,
 	vector<int>& cv,
-	size_t zvar
+    int zvar
 )
 {
 	assert(bv.size() == av.size());
@@ -190,12 +190,12 @@ inline void cardn_simple_merge_recur(
 			clset.create_ternary_clause(-av[0], -bv[0], cv[1]);
 		}
 		else {
-			if (av[0] == zvar) {
+            if (av[0] == (int)zvar) {
 				cv.push_back(bv[0]);
 				cv.push_back(av[0]);
 			}
 			else {
-				assert(bv[0] == zvar);
+                assert(bv[0] == (int)zvar);
 				cv.push_back(av[0]);
 				cv.push_back(bv[0]);
 			}
@@ -229,12 +229,12 @@ inline void cardn_simple_merge_recur(
 			}
 		}
 		else {
-			if (av[0] == zvar && av[av.size() - 1] == zvar) {
+            if (av[0] == (int)zvar && av[av.size() - 1] == (int)zvar) {
 				copy_vvect(top_id, cv, bv);
 				copy_vvect(top_id, cv, av);
 			}
 			else {
-				assert(bv[0] == zvar && bv[av.size() - 1] == zvar);
+                assert(bv[0] == (int)zvar && bv[av.size() - 1] == (int)zvar);
 				copy_vvect(top_id, cv, av);
 				copy_vvect(top_id, cv, bv);
 			}
